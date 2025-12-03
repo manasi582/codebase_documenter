@@ -220,7 +220,6 @@ async def get_job_result(job_id: str):
 async def serve_documentation(job_id: str, file_path: str = "README.md"):
     """
     Serve documentation files from local storage.
-    Only works when STORAGE_MODE=local.
     
     Args:
         job_id: Unique job identifier
@@ -229,12 +228,6 @@ async def serve_documentation(job_id: str, file_path: str = "README.md"):
     Returns:
         File content
     """
-    if settings.storage_mode != "local":
-        raise HTTPException(
-            status_code=400,
-            detail="This endpoint only works with local storage mode"
-        )
-    
     try:
         storage = LocalStorageService()
         doc_path = storage.get_documentation_path(job_id)

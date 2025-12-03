@@ -20,7 +20,7 @@
 - **🤖 AI-Powered Analysis**: Uses GPT-4 and LangGraph to deeply understand your codebase
 - **📚 Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
 - **⚡ Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
-- **☁️ Cloud Storage**: Automatic upload to AWS S3 with presigned URLs
+- **💾 Local Storage**: Documentation saved locally for easy access
 - **🎨 Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
 - **🔄 Real-time Updates**: Live progress tracking during documentation generation
 
@@ -40,7 +40,7 @@
                                                   │
                                                   ▼
                                            ┌─────────────┐
-                                           │   AWS S3    │
+                                           │   Local     │
                                            │   Storage   │
                                            └─────────────┘
 ```
@@ -62,7 +62,7 @@
 
 **Infrastructure:**
 - Docker & Docker Compose - Containerization
-- AWS S3 - Documentation storage
+- Local File System - Documentation storage
 - GitPython - Repository cloning
 
 ## 🚀 Quick Start
@@ -73,8 +73,7 @@
 - OpenAI API key
 - Git
 
-**Optional:**
-- AWS account with S3 access (only if you want cloud storage; local storage works fine for development)
+
 
 ### Installation
 
@@ -92,10 +91,9 @@
    Edit `.env` and add your OpenAI API key:
    ```env
    OPENAI_API_KEY=your_openai_api_key
-   STORAGE_MODE=local
    ```
    
-   **Note:** By default, the system uses local storage (`STORAGE_MODE=local`). Documentation will be saved to `/tmp/codebase_docs`. If you have AWS S3, you can set `STORAGE_MODE=s3` and add your AWS credentials.
+   **Note:** Documentation will be saved to `/tmp/codebase_docs` on your local system.
 
 3. **Start the application**
    ```bash
@@ -151,7 +149,7 @@ codebase_documenter/
 │   └── utils.py         # Helper functions
 ├── services/            # Service layer
 │   ├── git_service.py   # Git operations
-│   ├── s3_service.py    # S3 operations
+│   ├── local_storage.py # Local storage operations
 │   └── file_analyzer.py # File analysis
 ├── frontend/            # Next.js application
 │   └── src/

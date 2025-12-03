@@ -5,7 +5,6 @@ from celery import Task
 from celery_app import celery_app
 from config import settings
 from services.git_service import GitService
-from services.s3_service import S3Service
 from services.local_storage import LocalStorageService
 from services.file_analyzer import FileAnalyzer
 from ai_agent.agent import DocumentationAgent
@@ -82,23 +81,18 @@ def analyze_and_document(self, github_url: str, job_id: str) -> dict:
                 # Create safe filename
                 safe_name = file_path.replace('/', '_').replace('.', '_') + '.md'
                 with open(os.path.join(func_docs_dir, safe_name), 'w') as f:
-                    f.write(f"# {file_path}\n\n{content}")
+                    f.write(f"# {file_path}\\n\\n{content}")
         
         # Write setup guide
         with open(os.path.join(docs_dir, 'SETUP.md'), 'w') as f:
             f.write(result['setup_guide'])
         
         # Update task state
-        storage_type = "local storage" if settings.storage_mode == "local" else "S3"
-        self.update_state(state='UPLOADING', meta={'status': f'Saving to {storage_type}...'})
+        self.update_state(state='UPLOADING', meta={'status': 'Saving to local storage...'})
         
-        # Upload based on storage mode
-        if settings.storage_mode == "s3":
-            storage_service = S3Service()
-            doc_url = storage_service.upload_documentation(job_id, docs_dir)
-        else:
-            storage_service = LocalStorageService()
-            doc_url = storage_service.upload_documentation(job_id, docs_dir)
+        # Upload to local storage
+        storage_service = LocalStorageService()
+        doc_url = storage_service.upload_documentation(job_id, docs_dir)
         
         # Upload metadata
         metadata = {
