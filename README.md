@@ -15,16 +15,16 @@
 
 ---
 
-## 🌟 Features
+##  Features
 
-- **🤖 AI-Powered Analysis**: Uses GPT-4 and LangGraph to deeply understand your codebase
-- **📚 Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
-- **⚡ Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
+- **AI-Powered Analysis**: Uses GPT-4 and LangGraph to deeply understand your codebase
+- **Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
+- **Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
 - **💾 Local Storage**: Documentation saved locally for easy access
-- **🎨 Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
-- **🔄 Real-time Updates**: Live progress tracking during documentation generation
+- **Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
+- **Real-time Updates**: Live progress tracking during documentation generation
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────┐      ┌──────────────┐      ┌─────────────┐
@@ -65,7 +65,7 @@
 - Local File System - Documentation storage
 - GitPython - Repository cloning
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -188,7 +188,7 @@ npm run dev
 redis-server
 ```
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 # Backend tests
@@ -200,7 +200,7 @@ cd frontend
 npm test
 ```
 
-## 📝 Generated Documentation
+##  Generated Documentation
 
 The AI agent generates:
 
@@ -209,21 +209,16 @@ The AI agent generates:
 3. **Function Documentation** - Detailed explanations of key files
 4. **SETUP.md** - Complete installation and setup guide
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - OpenAI for GPT-4 API
 - LangChain and LangGraph teams
@@ -231,6 +226,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-<div align="center">
-Made with ❤️ using AI
-</div>
+
