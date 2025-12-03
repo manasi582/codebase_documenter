@@ -2,12 +2,7 @@
 
 <div align="center">
 
-![Codebase Documenter](https://img.shields.io/badge/AI-Powered-purple?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
-![Python](https://img.shields.io/badge/python-3.11+-green?style=for-the-badge)
-![Next.js](https://img.shields.io/badge/next.js-14-black?style=for-the-badge)
-
-**Transform any GitHub repository into comprehensive, AI-generated documentation in minutes**
+**Automate Documentation. Accelerate Development.**
 
 [Features](#features) • [Quick Start](#quick-start) • [Architecture](#architecture) • [Usage](#usage)
 
@@ -21,7 +16,7 @@
 - **Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
 - **Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
 - **Local Storage**: Documentation saved locally for easy access
-- **Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
+- **UI**: Modern, responsive Next.js frontend with glassmorphism and animations
 - **Real-time Updates**: Live progress tracking during documentation generation
 
 ## Architecture
