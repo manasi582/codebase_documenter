@@ -17,12 +17,12 @@
 
 ##  Features
 
-- ** AI-Powered Analysis**: Uses GPT-4 and LangGraph to deeply understand your codebase
-- ** Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
-- ** Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
-- ** Cloud Storage**: Automatic upload to AWS S3 with presigned URLs
-- ** Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
-- ** Real-time Updates**: Live progress tracking during documentation generation
+- **AI-Powered Analysis**: Uses GPT-4 and LangGraph to deeply understand your codebase
+- **Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
+- **Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
+- **Cloud Storage**: Automatic upload to AWS S3 with presigned URLs
+- **Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
+- **Real-time Updates**: Live progress tracking during documentation generation
 
 ## Architecture
 
