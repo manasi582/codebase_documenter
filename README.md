@@ -20,7 +20,7 @@
 - **AI-Powered Analysis**: Uses GPT-4 and LangGraph to deeply understand your codebase
 - **Complete Documentation**: Generates main README, folder READMEs, function docs, and setup guides
 - **Lightning Fast**: Asynchronous processing with Celery for handling multiple repositories
-- **💾 Local Storage**: Documentation saved locally for easy access
+- **Local Storage**: Documentation saved locally for easy access
 - **Beautiful UI**: Modern, responsive Next.js frontend with glassmorphism and animations
 - **Real-time Updates**: Live progress tracking during documentation generation
 
@@ -149,7 +149,7 @@
    - Backend API: http://localhost:8000
    - API Docs: http://localhost:8000/docs
 
-## 📖 Usage
+## Usage
 
 ### Web Interface
 
@@ -178,7 +178,7 @@ curl http://localhost:8000/api/status/{job_id}
 curl http://localhost:8000/api/result/{job_id}
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 codebase_documenter/
@@ -205,7 +205,7 @@ codebase_documenter/
 └── README.md            # Documentation
 ```
 
-## 🔧 Development
+## Development
 
 ### Environment Variables
 
