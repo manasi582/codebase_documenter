@@ -61,7 +61,6 @@
 - TypeScript - Type safety
 
 **Infrastructure:**
-- Docker & Docker Compose - Containerization
 - Local File System - Documentation storage
 - GitPython - Repository cloning
 
@@ -69,7 +68,9 @@
 
 ### Prerequisites
 
-- Docker and Docker Compose
+- Python 3.11+
+- Node.js 18+
+- Redis
 - OpenAI API key
 - Git
 
@@ -95,12 +96,55 @@
    
    **Note:** Documentation will be saved to `/tmp/codebase_docs` on your local system.
 
-3. **Start the application**
+3. **Install Redis**
    ```bash
-   docker-compose up --build
+   # macOS
+   brew install redis
+   brew services start redis
+   
+   # Or run manually
+   redis-server
    ```
 
-4. **Access the application**
+4. **Set up Backend**
+   ```bash
+   cd backend
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+5. **Set up Frontend**
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+6. **Start the application**
+   
+   Open 3 terminal windows:
+   
+   **Terminal 1 - Backend:**
+   ```bash
+   cd backend
+   source venv/bin/activate
+   uvicorn app:app --reload --host 0.0.0.0 --port 8000
+   ```
+   
+   **Terminal 2 - Celery Worker:**
+   ```bash
+   cd backend
+   source venv/bin/activate
+   celery -A celery_app worker --loglevel=info
+   ```
+   
+   **Terminal 3 - Frontend:**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+7. **Access the application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
    - API Docs: http://localhost:8000/docs
@@ -142,7 +186,8 @@ codebase_documenter/
 │   ├── app.py           # Main API endpoints
 │   ├── celery_app.py    # Celery configuration
 │   ├── tasks.py         # Async tasks
-│   └── config.py        # Settings
+│   ├── config.py        # Settings
+│   └── requirements.txt # Python dependencies
 ├── ai_agent/            # AI documentation agent
 │   ├── agent.py         # LangGraph workflow
 │   ├── prompts.py       # LLM prompts
@@ -152,43 +197,45 @@ codebase_documenter/
 │   ├── local_storage.py # Local storage operations
 │   └── file_analyzer.py # File analysis
 ├── frontend/            # Next.js application
+│   ├── package.json     # Node dependencies
 │   └── src/
 │       ├── app/         # Pages
 │       └── components/  # React components
-└── docker-compose.yml   # Docker orchestration
+├── .env.example         # Environment template
+└── README.md            # Documentation
 ```
 
 ## 🔧 Development
 
-### Running Locally (without Docker)
+### Environment Variables
 
-**Backend:**
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app:app --reload
+Make sure your `.env` file is properly configured with your API keys:
+```env
+OPENAI_API_KEY=your_actual_key_here
+# or
+GROQ_API_KEY=your_actual_key_here
 ```
 
-**Celery Worker:**
+### Troubleshooting
+
+**Redis Connection Issues:**
 ```bash
-celery -A celery_app worker --loglevel=info
+# Check if Redis is running
+redis-cli ping
+# Should return: PONG
 ```
 
-**Frontend:**
+**Port Already in Use:**
 ```bash
-cd frontend
-npm install
-npm run dev
+# Kill process on port 8000
+lsof -ti:8000 | xargs kill -9
+
+# Kill process on port 3000
+lsof -ti:3000 | xargs kill -9
 ```
 
-**Redis:**
-```bash
-redis-server
-```
 
-##  Testing
+## Testing
 
 ```bash
 # Backend tests
